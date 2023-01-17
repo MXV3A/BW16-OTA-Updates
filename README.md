@@ -1,5 +1,5 @@
 # AnchorOTA Library
-The AnchorOTA library enables over the air updates for the BW16 RTL8720DN boards from Ameba. This library is written for Arduino but should be easily modifiable to work on other platforms.
+The AnchorOTA library enables over the air updates for the BW16 RTL8720DN boards. This library is written for Arduino but should be easily modifiable to work on other platforms.
 
 ## Prerequisites
 ---
@@ -41,10 +41,10 @@ Depending on the chosen example sketch the .bin file will have to be saved
 ### 6 - Start the OTA
 Edit start.bat to add the right port, ip address, and filename, or call the .exe directly.
 #### For UploadServer use command:
-    upload_ota -f [filename] -i [chip ip address] -p [port]
+    UploadServer -f [filename] -i [chip ip address] -p [port]
 #### For DownloadServer use command:
     DownloadServer [port] [filename]
-Alternatively there's a Python file with the same functionality in the UploadServer folder (for Linux).
+Alternatively there's a Python file with the same functionality in the UploadServer folder.
 ### 7 - Repeat the OTA
 Updating over the air should work infinite times, as long as the updated binaries contain OTA functionality.
 

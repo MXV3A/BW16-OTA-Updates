@@ -1,3 +1,3 @@
 @echo off
-upload_ota -f ota.bin -i 192.168.32.224 -p 8080
+UploadServer -f ota.bin -i 192.168.32.224 -p 8080
 set /p DUMMY=Press Enter to Continue ...
