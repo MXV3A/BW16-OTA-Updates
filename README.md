@@ -44,7 +44,7 @@ Edit start.bat to add the right port, ip address, and filename, or call the .exe
     UploadServer -f [filename] -i [chip ip address] -p [port]
 #### For DownloadServer use command:
     DownloadServer [port] [filename]
-Alternatively there's a Python file with the same functionality in the UploadServer folder.
+Alternatively there are Python files with the same functionality in the respective folders.
 ### 7 - Repeat the OTA
 Updating over the air should work infinite times, as long as the updated binaries contain OTA functionality.
 
