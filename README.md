@@ -50,17 +50,18 @@ Updating over the air should work infinite times, as long as the updated binarie
 
 ## OTA Updates on bw16 rtl8720dn
 ---
--	OTA Address 1: 0x00006000  
--	OTA Address 2: 0x00106000  
+-	OTA Address 1: 0x006000  
+-	OTA Address 2: 0x106000  
 -	Address 2 is always checked first  
 -	Images in the Address are always expected as image for chip km0 (low energy) first, image for chip km4 (high performance) second, that's why image **km0_km4_image2.bin** is needed  
+-   km0_boot_all.bin or km4_boot_all.bin aren't needed after the first upload over serial port
 -	Images start with 8 signature bytes **0x35, 0x39, 0x31, 0x38, 0x31, 0x31, 0x37, 0x38** to communicate a valid image OR anything else for Invalid  
 -   If an image with the 'valid' signature fails to load then booting the chip fails completely
 -   OTA Updates have to contain OTA update functions to preserve OTA update functionality 
 -   First upload over Serial port saves in OTA Address 1; after that addresses have to be altered for every OTA  
 -   Hard Fault Error likely means the program tried to overwrite an image that is currently in use; prevented by resetting image signature bytes in case of a failed OTA update
 -   Serial uploads write the image at Address 1. If an earlier OTA update was saved at Address 2 this will be booted. Erase Flash and upload again to fix.
--   Sending an Image requires a file header with 3 Words (12 Bytes): Checksum, 0, Image Length (see python code) 
+-   Sending an Image requires a file header with 3 Words (12 Bytes): Checksum, 0, Image Length (see python code, empty byte compatible to older versions?)
 -   All Image Words in little Endian (LSB First), Bytes in big Endian (MSB First)  
 -   The checksum is calculated by adding up all bytes of the image, making use of overflows
 
