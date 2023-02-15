@@ -1,5 +1,5 @@
 # AnchorOTA Library
-The AnchorOTA library enables over the air updates for the BW16 RTL8720DN boards. This library is written for Arduino but should be easily modifiable to work on other platforms.
+The AnchorOTA library enables over the air updates for the BW16 RTL8720DN boards. This library is written for BW16 but should work on similar boards too, maybe with some adjustments.
 
 ## Prerequisites
 ---
@@ -15,15 +15,16 @@ Download or Clone this repository and pull the folder into your Arduino librarie
 ---
 ### 1 - Load example
 Start by going to File>Examples>AnchorOTA and chosing one of the examples provided by the library.
-- **ota_basic** will have the chip waiting for you to send it updates
-- **ota_cloud_basic** the chip will regularily request updates from a provided Ip addresss
-- **ota_non_block** and **ota_cloud_non_block** contain the same functionalities as ota_basic and ota_coud_basic but allow the program to continue while waiting for updates
+- **otaBasic** will have the chip waiting for you to send it updates
+- **otaCloud** the chip will regularily request updates from a provided Ip address
+- **otaBasicNonBlock** and **otaCloudNonBlock** contain the same functionalities as otaBasic and otaCoud but allow the program to continue while waiting for updates
 ### 2 - Add WiFi configuration
 Whichever example you chose, you will need to edit the sketch in the lines shown here by adding your WiFi SSID and Password.
-
-    char ssid[] = "yourNetwork";     //  your network SSID (name)
-    char pass[] = "secretPassword";  // your network password
-
+  
+    char ssid[] = "yourNetwork";     //  your network SSID  
+    char pass[] = "secretPassword";  // your network password  
+  
+In **otaCloud** you also have to add the IP of your server device.  
 ### 3 - Upload the sketch to BW16
 If the guide in prerequisites has been followed, this should work.  (If a successful upload to address 1 does not change the chip behavior, the reason might be an earlier ota update into ota address 2 which is always checked first by the bootloader. To fix use 'erase flash' feature of the Arduino IDE before uploading again.)  
 ### 4 - Compile a sketch to use in the OTA update
@@ -36,8 +37,8 @@ The compiled binary can be found as **km0_km4_image2.bin** under:
 
     C:\Users\User\AppData\Local\Arduino15\packages\realtek\tools\ameba_d_tools\1.0.8
 Depending on the chosen example sketch the .bin file will have to be saved
-- in the **UploadServer** folder if you used **ota_basic**
-- in the **DownloadServer** folder if you used **ota_cloud**
+- in the **UploadServer** folder if you used **otaBasic**
+- in the **DownloadServer** folder if you used **otaCloud**
 ### 6 - Start the OTA
 Edit start.bat to add the right port, ip address, and filename, or call the .exe directly.
 #### For UploadServer use command:
