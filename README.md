@@ -1,6 +1,10 @@
 # AnchorOTA Library
-The AnchorOTA library enables over the air updates for the BW16 RTL8720DN boards. This library is written for BW16 but should work on similar boards too, maybe with some adjustments.
-
+The AnchorOTA library enables over the air updates for the BW16 RTL8720DN boards. This library is written for BW16 but should work on similar boards too, maybe with some adjustments.  
+  
+**Note:** As of March 2023 the AmebaD Arduino package SDK supports OTA updates now, so I recommend using those in your project.  
+[AmebaD Arduino third-party package SDK ](https://github.com/ambiot/ambd_arduino)  
+If you need the uncompiled uploaders, want to modify the process, or e.g use the Library to send large files, you can use this Repository.  
+  
 ## Prerequisites
 ---
 For this Library to work the Ameba Arduino Kit has to be installed:  
