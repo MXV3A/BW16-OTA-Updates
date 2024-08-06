@@ -4,8 +4,8 @@ import os
 int_max_value = 4294967295
 
 filename = "ota.bin"
-host = "192.168.32.224"
-port = 8080
+host = "192.168.178.21"
+port = 8082
 
 f = open(filename, "rb")
 checksum = 0
@@ -29,6 +29,7 @@ bytes = bytes + length.to_bytes(4, 'little')
 
 
 f = open(filename, 'rb')
+
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((host, port))
     s.send(bytes)

@@ -203,6 +203,11 @@ int OTAClass::receiveImage(int socket, int imageLength){
             break;
         }
 
+        if(readLength == 0){
+            printf("Connection closed by peer\r\n");
+            break;
+        }
+
         if (flash_stream_write(&flash, otaAddrNew + processedLength, readLength, buf) < 0) {
             printf("Write sector fail\r\n");
             break;
