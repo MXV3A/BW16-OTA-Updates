@@ -192,9 +192,16 @@ int OTAClass::receiveImage(int socket, int imageLength){
             return -1;
         }
     printf("Start Download.\r\n");
-    int processedLength = 0;
+    //Remove first 8 bytes from ota image. They are only added if everything goes right
+    int processedLength = recv_data(socket, buf, 8, 0);
+    if(processedLength < 8){
+        printf("Failed to receive Image Signal Bytes");
+        return -1;
+    }
     int readLength = 0;
+
     while( processedLength < imageLength ) {
+
         memset(buf, 0, BUFSIZE);
         readLength = recv_data(socket, buf, BUFSIZE, 0);
 
@@ -295,6 +302,9 @@ int OTAClass::calculateImageChecksum(int& calculatedChecksum, int imageLength){
         processedLength += readLength;
     }
     free(buf);
+    //remove empty start bytes, add ota signal bytes
+    calculatedChecksum -= (8 * 0xFF);
+    calculatedChecksum += OTA_VALID_CHECKSUM;
     return 0;
 }
 

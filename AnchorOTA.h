@@ -9,6 +9,7 @@
 #define OTA_VALID 0x35393138
 #define OTA_VALID2 0x31313738
 #define OTA_INVALID 0x35393130 //anything that's not OTA_VALID
+#define OTA_VALID_CHECKSUM (0xD7 + 0xD1) //OTA_VALID + OTA_VALID2
 
 #define BUFSIZE 512
 #define DEFAULT_OTA_MDNS_BUF 128
@@ -24,7 +25,7 @@ public:
     int endArduinoMdnsService();
 
     int beginLocal(uint16_t port, bool rebootOnSuccess = true); //1. OTA variant -> Chip is Server to receive images
-	int beginCloud(uint32_t ipaddress, uint16_t port, bool rebootOnSuccess = true); //2. OTA variant -> Chip is Client to request images
+    int beginCloud(uint32_t ipaddress, uint16_t port, bool rebootOnSuccess = true); //2. OTA variant -> Chip is Client to request images
 
 private:
     int receiveImage(int socket, int imageLength);

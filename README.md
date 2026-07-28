@@ -64,7 +64,7 @@ Updating over the air should work infinite times, as long as the updated binarie
 -   First upload over Serial port saves in OTA Address 1; after that addresses have to be altered for every OTA  
 -   Hard Fault Error likely means the program tried to overwrite an image that is currently in use; prevented by resetting image signature bytes in case of a failed OTA update
 -   Serial uploads write the image at Address 1. If an earlier OTA update was saved at Address 2 this will be booted. Erase Flash and upload again to fix.
--   Sending an Image requires a file header with 3 Words (12 Bytes): Checksum, 0, Image Length (see python code, empty byte compatible to older versions?)
+-   Sending an Image requires a file header with 3 Words (12 Bytes): Checksum, 0, Image Length (empty word is probably part of the image length (uint64_t) but useless because images are very small)
 -   All Image Words in little Endian (LSB First), Bytes in big Endian (MSB First)  
 -   The checksum is calculated by adding up all bytes of the image, making use of overflows
 
@@ -74,9 +74,9 @@ General BW16 Docs:
 https://amebaiotdocuments.readthedocs.io/en/latest/ambd_arduino/BW16_/index.html  
 Uploading Code to BW16:  
 https://github.com/mikey60/BW16-RTL8720DN-Module-Arduino  
-https://www.amebaiot.com/en/amebad-bw16-arduino-getting-started/  
+https://amebaiotdocuments.readthedocs.io/en/latest/ambd_arduino/BW16_/getting_started/ambd_getting_started.html
 OTA Explanations:  
 https://www.amebaiot.com.cn/en/ameba-arduino-ota/  
-https://www.e-paper-display.cn/99IOT/Started%20guide/Ameba-D-Application-Note-v10_215535.pdf  
+https://files.seeedstudio.com/products/102110419/Basic%20documents/AN0400%20Ameba-D%20Application%20Note_v3_watermark.pdf
 https://forum.amebaiot.com/t/resources-bw16-troubleshooting-guide/678  
 https://github.com/ambiot/ambd_arduino/pull/130  
